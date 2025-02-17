@@ -1,0 +1,33 @@
+move1:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [0.0, 0.0, 0.0]}
+
+move2:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [0.5, 2.1, 1.5]}
+
+move3:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [2.7, 0.95, 2.12]}
+
+move4:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [2.0, 2.20, 1.9]}
+
+move5:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [0.36, 1.68, 1.23]}
+
+move6:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [2.8, 0.7, 2.25]}
+
+move7:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [1.80, 2.40, 1.20]}
+
+move8:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [0.6, 1.05, 1.27]}
+
+move9:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [0.2, 1.40, 2.3]}
+
+move10:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [1.2, 2.40, 1.2]}
+
+home:
+  - {Mode: MoveJJoints, Speed: 0.6, Acceleration: 0.7, Blending: 0.0, Goal: [1.57, 0.65, 2.5]}
+

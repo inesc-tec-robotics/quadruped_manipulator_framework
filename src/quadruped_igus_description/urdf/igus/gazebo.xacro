@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<transmission name="art1_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="art1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="art1_actr">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  </transmission>
+
+  <transmission name="art2_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="art2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="art2_actr">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  </transmission>
+
+  <transmission name="art3_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="art3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="art3_actr">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<gazebo reference="joint1"> 
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>false</gravity>
+</gazebo>
+
+<gazebo reference="joint2">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>false</gravity>
+</gazebo>
+
+<gazebo reference="link1">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>false</gravity>
+</gazebo>
+
+<gazebo reference="joint3">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>false</gravity>
+</gazebo>
+
+<gazebo reference="link2">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>false</gravity>
+</gazebo>
+
+<gazebo reference="tool">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>false</gravity>
+</gazebo>
+
+</robot>

@@ -1,0 +1,9 @@
+<library path="lib/libigus_rviz_panel">
+
+  <class type="igus_rviz_panel::IgusRvizPanel" base_class_type="rviz::Panel">
+    <description>
+      A simple panel widget with two buttons.
+    </description>
+  </class>
+
+</library>

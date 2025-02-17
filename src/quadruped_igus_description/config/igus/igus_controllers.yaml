@@ -1,0 +1,37 @@
+# Publish all joint states -----------------------------------
+joint_states_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 25
+
+igus_controller:   
+  art1_pos:
+      type: effort_controllers/JointPositionController
+      joint: art1
+      pid: {p: 500.0, i: 0.01, d: 50.0, i_clamp_min:  -100, i_clamp_max: 100}
+
+  art2_pos:
+      type: effort_controllers/JointPositionController
+      joint: art2
+      pid: {p: 500.0, i: 0.01, d: 50.0, i_clamp_min:  -100, i_clamp_max: 100}
+
+  art3_pos:
+      type: effort_controllers/JointPositionController
+      joint: art3
+      pid: {p: 500.0, i: 0.01, d: 50.0, i_clamp_min:  -100, i_clamp_max: 100}
+
+
+  # # Velocity Controllers 
+  art1_vel:
+      type: effort_controllers/JointVelocityController
+      joint: art1
+      pid: {p: 40.0, i: 0.01, d: 0.0}
+
+  art2_vel:
+      type: effort_controllers/JointVelocityController
+      joint: art2
+      pid: {p: 40.0, i: 0.01, d: 0.0}
+
+  art3_vel:
+      type: effort_controllers/JointVelocityController
+      joint: art3
+      pid: {p: 40.0, i: 0.01, d: 0.0}

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Define the name of the model to use -->
+    <arg name="model" default="" />
+
+    <!-- Set the robot description parameter -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find quadruped_igus_description)/urdf/$(arg model).xacro'"/>
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+
+</launch>

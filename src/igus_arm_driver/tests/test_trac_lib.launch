@@ -1,0 +1,11 @@
+<launch>
+    <arg name="model" default="quadruped_igus_fixed"/>
+
+    <include file="$(find description_dataset)/launch/robot_description_bringup.launch">
+      <arg name="model" value="$(arg model)"/>
+    </include>
+
+    <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher" output="screen"/>
+
+    <node pkg="igus_arm_driver" type="test_trac_lib_node" name="test_trac_lib_node" output="screen"/>
+</launch>

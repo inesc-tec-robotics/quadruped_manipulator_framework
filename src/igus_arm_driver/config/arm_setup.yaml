@@ -1,0 +1,31 @@
+joint_num: 3
+
+joint1: {
+  gear_ratio: 50,
+  ticks_per_rotation: 371200,
+  offset: 0.310,
+  can_id: 0x10,
+  direction: -1,
+}
+
+joint2: {
+  gear_ratio: 70,
+  ticks_per_rotation: 519680,
+  offset: 1.116,
+  can_id: 0x18,
+  direction: -1,
+} 
+
+joint3: {
+  gear_ratio: 70,
+  ticks_per_rotation: 519680,
+  offset: 3.986,
+  can_id: 0x20,
+  direction: 1,
+}
+
+w_min: 0.035
+w_max: 0.6
+a_max: 0.7
+error_threshold_joints:  0.001
+error_threshold: 0.008

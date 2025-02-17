@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>quadruped_igus_bringup</name>
+  <version>1.0.0</version>
+  <description>The quadruped_igus_bringup package</description>
+
+  <maintainer email="maria.s.lopes@inesctec.pt">maris.s.lopes</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

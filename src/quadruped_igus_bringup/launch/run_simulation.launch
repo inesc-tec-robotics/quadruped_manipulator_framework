@@ -1,0 +1,29 @@
+<launch>    
+    <arg name="model" default="quadruped_igus"/>
+    <arg name="world" default=""/>
+
+    <!-- Load robot -->
+    <include file="$(find quadruped_igus_description)/launch/robot_sim_bringup.launch">
+      <arg name="model" value="$(arg model)"/>
+      <arg name = "initial_base_pos" value="0 0 0.4 0 0 0"/>
+      <arg name = "initial_arm_pos" value="1.57 0.65 2.5 0 0 0"/>
+    </include>
+
+    <!-- Launch simulation -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="paused" value="true"/>
+      <arg name="use_sim_time" value="true"/>
+      <arg name="gui" value="true"/>
+      <arg name="headless" value="false"/>
+      <arg name="debug" value="false"/>
+    </include>
+
+    <!-- Robot Controller -->
+    <include file="$(find aliengo_controller)/launch/robot_controller.launch"/> 
+
+    <!-- Arm Controller -->
+    <include file="$(find igus_arm_driver)/launch/igus_arm_driver_sim.launch"/>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find quadruped_igus_bringup)/rviz/igus_arm_controller.rviz" /> 
+
+</launch>

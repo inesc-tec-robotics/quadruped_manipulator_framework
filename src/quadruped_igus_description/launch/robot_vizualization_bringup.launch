@@ -1,0 +1,44 @@
+<launch>
+
+    <!-- Arguments -->
+    <arg name="launch_joint_states" default="false"/>
+    <arg name="launch_gui" default="true"/>
+    <arg name="launch_rviz" default="true"/>
+    <arg name="pub_default" default="true" />
+    <arg name="model" default="" />
+
+    <arg name="config_path" default="$(eval '_'.join(model.split('_')[:3]) if len(model.split('_')) > 3 else '_'.join(model.split('_')[:2]))" />
+    <arg name="yaml_zeros_joints" default="$(find quadruped_igus_description)/config/initial_positions.yaml" />
+
+    <!-- Include of the robot to be launched -->
+    <include file="$(find quadruped_igus_description)/launch/robot_description_bringup.launch">
+        <arg name="model" default="$(arg model)" />
+    </include>
+
+    <!-- Start the joint_state_publisher -->
+    <group if="$(arg launch_joint_states)">
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+            <param name="use_gui" value="$(arg launch_gui)" />
+            <param name="publish_default_positions" value="$(arg pub_default)" />
+            <rosparam command="load" file="$(arg yaml_zeros_joints)" subst_value="true" if="$(eval bool(yaml_zeros_joints))" />
+
+        </node>
+    </group>
+
+    <!-- Start the joint_state_publisher_gui -->
+    <group if="$(arg launch_gui)">
+        <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
+            <param name="publish_default_positions" value="$(arg pub_default)" />
+            <rosparam command="load" file="$(arg yaml_zeros_joints)" subst_value="true" if="$(eval bool(yaml_zeros_joints))" />
+        </node>
+    </group>
+
+    <!-- Start the robot_state_publisher -->
+    <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen"/> -->
+
+    <!-- Start rviz -->
+    <group if="$(arg launch_rviz)">
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find quadruped_igus_description)/launch/view_config.rviz" required="true" />
+    </group>
+
+</launch>

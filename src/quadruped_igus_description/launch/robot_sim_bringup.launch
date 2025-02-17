@@ -1,0 +1,23 @@
+<launch>
+    <arg name="model" default=""/>
+    <arg name = "initial_base_pos" default=""/>
+    <arg name = "initial_arm_pos" default=""/>
+
+    <arg name="config_path" value="$(eval '_'.join(model.split('_')[:3]) if len(model.split('_')) > 3 else '_'.join(model.split('_')[:2]))" />
+
+    <arg name="base" value="$(eval model.split('_')[0] if len(model.split('_')) > 0 else '')" />
+    <arg name="arm" value="$(eval model.split('_')[1] if len(model.split('_')) > 1 else '')" />
+    <arg name="sensor" value="$(eval model.split('_')[2] if len(model.split('_')) > 2 else '')" />
+    <arg name="act" value="$(eval model.split('_')[3] if len(model.split('_')) > 3 else '')" />
+    
+    <include file="$(find quadruped_igus_description)/launch/robot_description_bringup.launch">
+        <arg name="model" value="$(arg model)" />
+    </include>
+
+    <include file="$(find quadruped_igus_description)/config/gazebo.launch.xml">
+        <arg name="model" value="$(arg model)" />
+        <arg name = "initial_base_pos" value="$(arg initial_base_pos)"/>
+        <arg name = "initial_arm_pos" value="$(arg initial_arm_pos)"/>
+    </include>
+
+</launch>

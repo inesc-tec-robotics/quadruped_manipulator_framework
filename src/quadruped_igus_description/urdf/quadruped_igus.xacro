@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<robot name="quadruped_igus" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find quadruped_igus_description)/urdf/quadruped/aliengo.xacro"/>
+    <xacro:include filename="$(find quadruped_igus_description)/urdf/mid70/livox_mid70.xacro"/>
+    <xacro:include filename="$(find quadruped_igus_description)/urdf/igus/macro.xacro"/>
+
+    <xacro:quadruped_build/>
+    <xacro:lidar_build parent_link="carril"/>
+    <xacro:arm_build parent_link="carril"/>
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        </plugin>
+    </gazebo>
+
+</robot>

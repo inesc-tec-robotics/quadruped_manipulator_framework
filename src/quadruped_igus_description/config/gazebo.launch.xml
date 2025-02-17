@@ -1,0 +1,48 @@
+<launch>    
+    <arg name = "model" default=""/>
+    <arg name = "initial_base_pos" default="0 0 0 0 0 0"/>
+    <arg name = "initial_arm_pos" default="0 0 0 0 0 0"/>
+
+    <arg name="config_path" value="$(eval '_'.join(model.split('_')[:3]) if len(model.split('_')) > 3 else '_'.join(model.split('_')[:2]))" />
+    <arg name="base" value="$(eval model.split('_')[0] if len(model.split('_')) > 0 else '')" />
+    <arg name="arm" value="$(eval model.split('_')[1] if len(model.split('_')) > 1 else '')" />
+    <arg name="sensor" value="$(eval model.split('_')[2] if len(model.split('_')) > 2 else '')" />
+    <arg name="act" value="$(eval model.split('_')[3] if len(model.split('_')) > 3 else '')" />
+
+    <arg name="x" default="$(eval initial_base_pos.split(' ')[0])" />
+    <arg name="y" default="$(eval initial_base_pos.split(' ')[1])" />
+    <arg name="z" default="$(eval initial_base_pos.split(' ')[2])" />
+    <arg name="R" default="$(eval initial_base_pos.split(' ')[3])" />
+    <arg name="P" default="$(eval initial_base_pos.split(' ')[4])" />
+    <arg name="Y" default="$(eval initial_base_pos.split(' ')[5])" />
+
+    <arg name="j1" default="$(eval initial_arm_pos.split(' ')[0])" />
+    <arg name="j2" default="$(eval initial_arm_pos.split(' ')[1])" />
+    <arg name="j3" default="$(eval initial_arm_pos.split(' ')[2])" />
+    <arg name="j4" default="$(eval initial_arm_pos.split(' ')[3])" />
+    <arg name="j5" default="$(eval initial_arm_pos.split(' ')[4])" />
+    <arg name="j6" default="$(eval initial_arm_pos.split(' ')[5])" />
+
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+    args="-urdf -model $(arg model) -param robot_description 
+      -x 0.0 -y 0.0 -z 0.4 -R 0.0 -P 0.0 -Y 0.0 
+      -J art1 1.57 -J art2 -0.3 -J art3 3.10" />
+
+    <rosparam file="$(find quadruped_igus_description)/config/igus/igus_controllers.yaml" command="load"/>
+    <rosparam file="$(find quadruped_igus_description)/config/quadruped/quadruped_controllers.yaml" command="load"/>
+    <!-- <rosparam file="$(find quadruped_igus_description)/config/arm_interface.yaml" command="load"/> -->
+    
+    <!-- Spawn Controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"
+          args="joint_states_controller
+                /quadruped_controller/FR_hip_joint /quadruped_controller/FR_thigh_joint /quadruped_controller/FR_calf_joint
+                /quadruped_controller/FL_hip_joint /quadruped_controller/FL_thigh_joint /quadruped_controller/FL_calf_joint
+                /quadruped_controller/RR_hip_joint /quadruped_controller/RR_thigh_joint /quadruped_controller/RR_calf_joint
+                /quadruped_controller/RL_hip_joint /quadruped_controller/RL_thigh_joint /quadruped_controller/RL_calf_joint
+                /igus_controller/art1_vel /igus_controller/art2_vel /igus_controller/art3_vel" />
+
+    <!-- Spawn Additional Controllers in Stopped Mode -->
+    <node name="stopped_controller_spawner" pkg="controller_manager" type="spawner" output="screen"
+          args="--stopped /igus_controller/art1_pos /igus_controller/art2_pos /igus_controller/art3_pos" />
+
+</launch>

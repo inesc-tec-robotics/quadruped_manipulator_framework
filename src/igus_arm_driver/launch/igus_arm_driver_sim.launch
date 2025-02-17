@@ -1,0 +1,9 @@
+<launch>
+
+    <rosparam file="$(find igus_arm_driver)/config/arm_setup.yaml" />
+    <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find igus_arm_driver)/config/verbosity.conf"/>
+
+    <node name="igus_arm_driver_sim_node" pkg="igus_arm_driver" type="igus_arm_driver_sim_node" output="screen" args="--log debug"/>
+
+</launch>

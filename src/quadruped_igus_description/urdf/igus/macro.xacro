@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+   
+    <xacro:include filename="$(find quadruped_igus_description)/urdf/igus/gazebo.xacro"/>     
+
+    <xacro:macro name="arm_build" params="parent_link"> 
+
+    <link name="joint1">
+    <inertial>
+        <origin xyz="1.8446348216676444e-06 1.0019050237508406e-05 0.035313821535849256" rpy="0 0 0"/>
+        <mass value="2.8861477978888983"/>
+        <inertia ixx="0.002644" iyy="0.002862" izz="0.002965" ixy="0.0" iyz="1e-06" ixz="0.0"/>
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://quadruped_igus_description/meshes/igus/joint1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="brown"/>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://quadruped_igus_description/meshes/igus/joint1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="joint2">
+    <inertial>
+        <origin xyz="0.0005189511663817368 -0.012500150186825671 0.061505171577141915" rpy="0 0 0"/>
+        <mass value="4.410013267833993"/>
+        <inertia ixx="0.004921" iyy="0.006159" izz="0.004551" ixy="9e-06" iyz="0.000187" ixz="-5e-06"/>
+    </inertial>
+    <visual>
+        <origin xyz="0.0 -0.0 -0.0718" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://quadruped_igus_description/meshes/igus/joint2.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="brown"/>
+    </visual>
+    <collision>
+        <origin xyz="0.0 -0.0 -0.0718" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://quadruped_igus_description/meshes/igus/joint2.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="link1">
+    <inertial>
+        <origin xyz="0.1289072284015996 -0.008370758332708873 9.696784263130143e-06" rpy="0 0 0"/>
+        <mass value="0.2737332219620069"/>
+        <inertia ixx="0.000113" iyy="0.00341" izz="0.00331" ixy="1.6e-05" iyz="0.0" ixz="-0.0"/>
+    </inertial>
+    <visual>
+        <origin xyz="-0.000611 0.044997 -0.135522" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://quadruped_igus_description/meshes/igus/link1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="brown"/>
+    </visual>
+    <collision>
+        <origin xyz="-0.000611 0.044997 -0.135522" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://quadruped_igus_description/meshes/igus/link1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="joint3">
+    <inertial>
+        <origin xyz="0.0006735657851894006 0.03510902179640565 0.00046656348038737194" rpy="0 0 0"/>
+        <mass value="4.155537401746254"/>
+        <inertia ixx="0.004097" iyy="0.00545" izz="0.004099" ixy="-6e-06" iyz="-1.4e-05" ixz="-1e-06"/>
+    </inertial>
+    <visual>
+        <origin xyz="-0.260893 0.045857 -0.135542" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://quadruped_igus_description/meshes/igus/joint3.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="brown"/>
+    </visual>
+    <collision>
+        <origin xyz="-0.260893 0.045857 -0.135542" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://quadruped_igus_description/meshes/igus/joint3.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="link2">
+    <inertial>
+        <origin xyz="0.14746005156798736 0.007001521250875307 -3.577082108688345e-05" rpy="0 0 0"/>
+        <mass value="0.25682685712533887"/>
+        <inertia ixx="0.000123" iyy="0.005271" izz="0.00527" ixy="0.000151" iyz="0.0" ixz="-1e-06"/>
+    </inertial>
+    <visual>
+        <origin xyz="-0.261615 -0.020143 -0.135887" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://quadruped_igus_description/meshes/igus/link2.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="brown"/>
+    </visual>
+    <collision>
+        <origin xyz="-0.261615 -0.020143 -0.135887" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://quadruped_igus_description/meshes/igus/link2.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="tool">
+        <inertial>
+            <mass value="0.5"/>
+            <inertia ixx="20e-4" ixy="0"  ixz="0"  iyy="17e-4"  iyz="0" izz="17e-4"/>
+        </inertial>
+    </link>  
+
+
+    <joint name="elo0" type="fixed">
+        <origin xyz="0.087306 0.00055 0.01" rpy="0 0 1.57"/>
+        <parent link="${parent_link}"/>
+        <child link="joint1"/>
+    </joint>
+
+    <joint name="art1" type="continuous">
+        <origin xyz="0.0 0.0 0.0718" rpy="0 0 0"/>
+        <parent link="joint1"/>
+        <child link="joint2"/>
+        <axis xyz="-0.0 0.0 1.0"/>
+        <limit effort="2.5" velocity="0.6" lower="-6.28" upper="6.28"/>
+    </joint>
+
+    <joint name="art2" type="continuous">
+        <origin xyz="0.000611 -0.044997 0.063722" rpy="0 0 0"/>
+        <parent link="joint2"/>
+        <child link="link1"/>
+        <axis xyz="0.0 -1.0 -0.0"/>
+        <limit effort="20" velocity="0.6" lower="-0.3" upper="3.44"/>
+    </joint>
+
+    <joint name="elo3" type="fixed">
+        <origin xyz="0.260282 -0.00086 2e-05" rpy="0 0 0"/>
+        <parent link="link1"/>
+        <child link="joint3"/>
+    </joint>
+
+    <joint name="art3" type="continuous">
+        <origin xyz="0.000722 0.066 0.000345" rpy="0 0 0"/>
+        <parent link="joint3"/>
+        <child link="link2"/>
+        <axis xyz="-0.0 -0.999982 0.00592"/>
+        <limit effort="20" velocity="0.6" lower="-6.28" upper="6.28"/>
+    </joint>
+
+    <joint name="elo_tool" type="fixed">
+        <origin xyz="0.37500 -0.021 0.0" rpy="1.57 0 0"/>
+        <parent link="link2"/>
+        <child link="tool"/>
+    </joint>
+
+    </xacro:macro>
+</robot>

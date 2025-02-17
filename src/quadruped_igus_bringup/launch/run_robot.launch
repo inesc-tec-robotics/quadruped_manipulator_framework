@@ -1,0 +1,16 @@
+<launch>
+    <arg name="model" default="quadruped_igus_fixed"/>
+    <arg name="rqt" default="false"/>
+    <arg name="trajectory_file" default="$(find quadruped_igus_bringup)/config/igus_trajectories.yaml"/>
+
+    <include file="$(find description_dataset)/launch/robot_description_bringup.launch">
+      <arg name="model" value="$(arg model)"/>
+    </include>
+
+    <!-- Arm Controller -->
+    <rosparam file="$(find description_dataset)/config/quadruped_igus/arm_interface.yaml" command="load"/>
+  
+    <include file="$(find igus_arm_driver)/launch/igus_arm_driver_hard.launch"/>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find quadruped_igus_bringup)/rviz/igus_arm_controller.rviz" />
+</launch>
