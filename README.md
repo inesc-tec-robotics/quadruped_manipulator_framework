@@ -121,9 +121,7 @@ us, please contact one of the contributors of this project:
 - Manuel F. Silva ([email](mailto:mss@isep.ipp.pt),
   [orcid](https://orcid.org/0000-0002-0593-2865))
 
-## References
-
-
+<!-- ## References -->
 
 ## Acknowledgements
 
