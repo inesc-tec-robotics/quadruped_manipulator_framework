@@ -59,7 +59,7 @@ There are two ways of sending instructions to the arm:
 - **Publish a goal in `igus_arm_driver_skill/goal` target space**  
   Send one movement or a sequence of movements using instructions of the following type:
   
-  moveT(p={a,b,c},v=s,a=$\ddot{\theta}_{max}$)
+  moveT(p={a,b,c},v=s,a= $\ddot{\theta}_{max}$ )
 
   Here's what each part of the command means:
 
@@ -84,8 +84,6 @@ There are two ways of sending instructions to the arm:
 
 ### Limits
 
-The kinematic limits for IK are defined in `src/igus_arm_driver/src/igus_arm_driver/trac_kinematics.cpp` in order to keep the solutions inside the desired workspace. 
-
  * Maximum TCP velocity: `0.2 `m/s
  * Maximum joint velocity (`w_max`): `0.6` rad/s
  * Maximum joint acceleration (`a_max`): `0.7` rad/s²
@@ -94,22 +92,22 @@ All these values can be modified in `src/igus_arm_driver/config/arm_setup.yaml`.
 
 * `w_min`: The deadzone limit for joint velocity.
 * `error_threshold_joints`: The acceptable stopping error in joint space.
-* `error_threshold`: The acceptable task space error, measured in Euclidean distance.
+* `error_threshold`: The acceptable task space error, measured in meters using Euclidean distance.
 
-These parameters influence motion control accuracy and can be adjusted based on system requirements.
+These parameters influence motion control accuracy and can be adjusted based on system requirements. The kinematic limits for IK are defined in `src/igus_arm_driver/src/igus_arm_driver/trac_kinematics.cpp` in order to keep the solutions inside the desired workspace. 
 
-<!-- ## License
+## License
 
 Distributed under the [MIT License](https://choosealicense.com/licenses/mit/).
-See [`LICENSE`](LICENSE) for more information. -->
+See [`LICENSE`](LICENSE) for more information.
 
 ## Contacts
 
 If you have any questions or you want to know more about the work developed by
 us, please contact one of the contributors of this project:
 
-- Maria S. Lopes([email:feup](mailto:mslopes@efe.up.pt),
-  [email:inesctec](mailto:maria.s.lopes@inesctec.pt),
+- Maria S. Lopes([email:inesctec](mailto:maria.s.lopes@inesctec.pt),
+  [email:feup](mailto:mslopes@efe.up.pt),
   [orcid](https://orcid.org/0009-0001-7216-2469))
   _(corresponding author)_
 - Alexandre Melo ([email](mailto:alexandre.mello@inesctec.pt),
